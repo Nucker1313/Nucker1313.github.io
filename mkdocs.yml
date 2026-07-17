@@ -1,5 +1,5 @@
-site_name: My Homelab Documentation
-site_url: https://your-username.github.io/
+site_name: Bryce's Homelab Documentation
+site_url: https://BryceA-IT.github.io/
 theme:
   name: material
   features:
