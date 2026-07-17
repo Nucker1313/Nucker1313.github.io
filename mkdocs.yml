@@ -1,0 +1,13 @@
+site_name: My Homelab Documentation
+site_url: https://your-username.github.io/
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+plugins:
+  - search
+nav:
+  - Home: index.md
+  - Network Configuration: network/topology.md
