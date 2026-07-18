@@ -10,4 +10,9 @@ plugins:
   - search
 nav:
   - Home: index.md
+  - Windows LAB:
+      - Overview: LAB/Windows/index.md
+      - Hyper-V Setup: LAB/Windows/HyperV-Environment-Setup.md
+      - OPNsense Installation: LAB/Windows/Installing-OPNsense.md
+      - Domain Controller: LAB/Windows/Installing-DomainController.md
   - Network Configuration: network/topology.md
