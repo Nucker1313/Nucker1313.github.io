@@ -1,0 +1,1146 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://BryceA-IT.github.io/projects/linksys-whw01-mesh/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../LAB/Windows/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Linksys WHW01 Mesh - Bryce's Homelab Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linksys-whw01-v1-mesh-openwrt-upgrade-and-mesh-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Bryce&#39;s Homelab Documentation" class="md-header__button md-logo" aria-label="Bryce's Homelab Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bryce's Homelab Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linksys WHW01 Mesh
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../LAB/Windows/" class="md-tabs__link">
+          
+  
+  
+  Windows LAB
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../network/topology/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Network Configuration
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Bryce&#39;s Homelab Documentation" class="md-nav__button md-logo" aria-label="Bryce's Homelab Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bryce's Homelab Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linksys WHW01 Mesh
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linksys WHW01 Mesh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executive Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-and-software-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware and Software Specifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-software-limitations-stock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Software Limitations (Stock)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Procedure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-openwrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing OpenWrt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-wireless-mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring the Wireless Mesh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-wireless-access-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring Wireless Access Points
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-drawbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational Drawbacks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future Configurations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows LAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows LAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LAB/Windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LAB/Windows/HyperV-Environment-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hyper-V Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LAB/Windows/Installing-OPNsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LAB/Windows/Installing-DomainController/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain Controller
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executive Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-and-software-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware and Software Specifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-software-limitations-stock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Software Limitations (Stock)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Procedure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-openwrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing OpenWrt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-wireless-mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring the Wireless Mesh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-wireless-access-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring Wireless Access Points
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-drawbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational Drawbacks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future Configurations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="linksys-whw01-v1-mesh-openwrt-upgrade-and-mesh-setup">Linksys WHW01-V1 Mesh - OpenWrt Upgrade and Mesh Setup</h1>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>This project documents reclaiming three Linksys WHW01-V1 (Velop Dual-Band) access points by installing OpenWrt 25.12.5 and configuring an 802.11s encrypted mesh. The goal of this project is to improve the overall security of EOL consumer hardware by transitioning to open source software, as well as adding enhanced security features such as WPA3, VLAN segmentation and granular firewall policies. </p>
+<h2 id="hardware-and-software-specifications">Hardware and Software Specifications</h2>
+<ul>
+<li><strong>Devices:</strong> 3x Linksys WHW01-V1 (Velo Dual-Band)</li>
+<li><strong>Stock Firmware:</strong> Linksys factory image (1.1.13.202617)</li>
+<li><strong>Target Firmware:</strong> OpenWrt 25.12.5 (Latest release at time of install)</li>
+</ul>
+<h2 id="current-software-limitations-stock">Current Software Limitations (Stock)</h2>
+<ul>
+<li>Limited to WPA2</li>
+<li>WPS enabled by default</li>
+<li>UPnP enabled by default</li>
+<li>Weak and limited parental controls and firewall features</li>
+<li>Hardware is End-of-Life (EOL) with no ongoing vendor support or vulnerability patching</li>
+</ul>
+<h2 id="implementation-procedure">Implementation Procedure</h2>
+<p>[!WARNING]
+"Mesh Configuration Consistency"
+The following wireless and mesh configurations must be applied identically across all nodes for the 802.11s mesh and client roaming to function properly.</p>
+<h3 id="installing-openwrt">Installing OpenWrt</h3>
+<ul>
+<li>Reset to factory defaults (The reset password feature can also be utilized) </li>
+<li>Download latest supported version of OpenWrt for the WHW01-V1 from the official site </li>
+<li>In the Linksys GUI, navigate to "connectivity" settings and click "CA" at the bottom of the page. (This will give you the ability to select a manual update file)</li>
+<li>Upload the OpenWrt image</li>
+<li>After the system updates, access the OpenWrt GUI through 192.168.1.1</li>
+<li>Login to OpenWrt (username = root, password = blank)</li>
+</ul>
+<p>### OpenWrt Interface Configurations</p>
+<ul>
+<li>Navigate to Network -&gt; Interfaces <ul>
+<li>Create a new interface called "wan" and assign it to "ETH2" (ETH2 is the top ethernet port)</li>
+<li>Edit the "lan" interface<ul>
+<li>Set a static IPv4 address for each node (e.g., 10.0.0.1/24 for node-1, 10.0.0.2/24 for node-2, 10.0.0.3/24 for node-3)</li>
+<li>Parent node: Set IPv4 (e.g., 10.0.0.1/24) and Enable DHCP,</li>
+<li>Child nodes: Set IPv4 (e.g., 10.0.0.2/24), set the Gateway and DNS to parent node IP, and Disable DHCP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Navigate to Network -&gt; Devices</li>
+<li>Configure "br-lan" and remove "ETH2" from the bridge ports</li>
+</ul>
+<p>[!note]
+The WAN connection must now be connected to "ETH2".</p>
+<ul>
+<li>Navigate to System -&gt; Software</li>
+<li>Select Actions: Update lists...</li>
+<li>Remove "wpad-basic-mbedtls" (This package must be removed as it lacks 802.11s mesh support)</li>
+<li>
+<p>Install "wpad-mesh-openssl" </p>
+</li>
+<li>
+<p>Navigate to System -&gt; System</p>
+</li>
+<li>Set unique hostnames for each node (e.g., node-1, node-2, node-3)</li>
+<li>
+<p>Set the local timezone</p>
+</li>
+<li>
+<p>Reboot the devices</p>
+</li>
+</ul>
+<h3 id="configuring-the-wireless-mesh">Configuring the Wireless Mesh</h3>
+<ul>
+<li>Navigate to Network -&gt; Wireless</li>
+<li>Add a new 5GHz interface</li>
+<li>Set Operating frequency. (Both the channel and width must be statically set)</li>
+<li>Change mode to "802.11s"</li>
+<li>Set Mesh Id (e.g., whw01_mesh)</li>
+<li>Set Network to "lan"</li>
+<li>Set Encryption to "WPA3-SAE" and configure a secure Key</li>
+</ul>
+<p><strong>Validation:</strong> At this stage, peer nodes should be visible under the "Associated Stations" table in the wireless overview. If missing, verify all mesh settings are identical and radios are enabled.</p>
+<h3 id="configuring-wireless-access-points">Configuring Wireless Access Points</h3>
+<p>Setting up the client-facing wireless networks follows a similar procedure. All ESSID and security settings must be identical across nodes to facilitate device roaming.</p>
+<ul>
+<li>Under the 2.4Ghz and 5Ghz radios, click Add:</li>
+<li>Channel/Width: Select statically (Note: 5GHz AP must be on the same channel as the mesh due to the lack of a dedicated backhaul radio)</li>
+<li>Mode: Access Point</li>
+<li>ESSID: Wirless_Name (e.g., OpenWrt)</li>
+<li>Network: lan</li>
+<li>Encryption: WPA3-SAE</li>
+<li>Key: [WiFi-Password]</li>
+<li>802.11r Fast Transition: Enabled</li>
+</ul>
+<h2 id="performance-analysis">Performance Analysis</h2>
+<p>During testing the max throughput observed was ~250Mbps. This represents a best case scenario as testing was done with only one device connected to the network. As devices on the network increases, the shared 5GHz radio will become overwhelmed and be a bottleneck. Latency and throughput would be affected as a result. </p>
+<h2 id="operational-drawbacks">Operational Drawbacks</h2>
+<ol>
+<li>
+<p><strong>Decentralized Management:</strong>  Every configuration change must be done to all nodes manually and identically. Any slight variation in network or wireless settings will break the mesh topology. The addition of a centralized controller or automation system would greatly increase the usability of the system. </p>
+</li>
+<li>
+<p><strong>Channel Constraints/Interference:</strong> The Linksys WHW01-V1 is only a dual band system. All 5Ghz traffic (mesh backhaul and access) must use the same channel. Due to OpenWrt 802.11s requiring statically assigned channels rather than dynamic selection, this setup is susceptive to co-channel interference especially in congested wireless environments. </p>
+</li>
+<li>
+<p><strong>Half-Duplex Operation:</strong> The mesh backhaul and client AP both operate over the singular 5Ghz radio. To support this, the radio must alternate between receiving data from a client and transmitting data to the parent node. This configuration halves the available throughput for mesh connected devices.</p>
+</li>
+</ol>
+<h2 id="future-configurations">Future Configurations</h2>
+<ol>
+<li>
+<p><strong>VLANs:</strong> Enabling 802.1Q VLANs instead of having a flat layer-2 network would greatly improve the security by isolating trusted devices from untrusted devices such as IoT. </p>
+</li>
+<li>
+<p><strong>Advanced Firewall Policies:</strong> While the default NAT firewall rules in OpenWrt allow for network connectivity, creating granular rules based on VLAN, device type, etc would continue to restrict exposure to critical home lab systems. </p>
+</li>
+<li>
+<p><strong>Centralized Management:</strong> Using automation such as Ansible would allow for greater ease of use for this mesh setup. </p>
+</li>
+<li>
+<p><strong>VPNs:</strong> Integrating WireGuard or OpenVPN would allow for secure out-of-band management and remote access to my internal resources. </p>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Replacing the stock Linksys firmware with OpenWrt revived unsupported hardware, introduced modern WPA3 encryption, enabled 802.11s encrypted mesh networking, and unlocked enterprise routing capabilities. For home‑lab and portfolio purposes, this demonstrates practical hardware reclamation and the fundamentals of a secure wireless mesh topology.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>OpenWrt device page: https://openwrt.org/toh/linksys/whw01_v1</li>
+<li>Linksys initial setup (vendor): https://support.linksys.com/kb/article/58-en/</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
