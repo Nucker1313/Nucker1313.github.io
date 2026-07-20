@@ -6,9 +6,9 @@ This project documents reclaiming three Linksys WHW01-V1 (Velop Dual-Band) acces
 
 ## Hardware and Software Specifications
 
-- Devices: 3x Linksys WHW01-V1 (Velo Dual-Band)
-- Stock Firmware: Linksys factory image (1.1.13.202617)
-- Target Firmware: OpenWrt 25.12.5 (Latest release at time of install)
+- **Devices:** 3x Linksys WHW01-V1 (Velo Dual-Band)
+- **Stock Firmware:** Linksys factory image (1.1.13.202617)
+- **Target Firmware:** OpenWrt 25.12.5 (Latest release at time of install)
 
 ## Current Software Limitations (Stock)
 
@@ -20,7 +20,8 @@ This project documents reclaiming three Linksys WHW01-V1 (Velop Dual-Band) acces
 
 ## Implementation Procedure
 
-!!! Warning "Mesh Configuration Consistency"
+[!WARNING]
+"Mesh Configuration Consistency"
 The following wireless and mesh configurations must be applied identically across all nodes for the 802.11s mesh and client roaming to function properly.
 
 ### Installing OpenWrt
@@ -29,7 +30,7 @@ The following wireless and mesh configurations must be applied identically acros
  - In the Linksys GUI, navigate to "connectivity" settings and click "CA" at the bottom of the page. (This will give you the ability to select a manual update file)
  - Upload the OpenWrt image
  - After the system updates, access the OpenWrt GUI through 192.168.1.1
- - Login to OpenWrt (username = root, password = <blank>)
+ - Login to OpenWrt (username = root, password = blank)
  
 
  ### OpenWrt Interface Configurations
@@ -43,7 +44,8 @@ The following wireless and mesh configurations must be applied identically acros
 - Navigate to Network -> Devices
  - Configure "br-lan" and remove "ETH2" from the bridge ports
 
-Note: The WAN connection must now be connected to "ETH2".
+[!note]
+The WAN connection must now be connected to "ETH2".
 
 - Navigate to System -> Software
  - Select Actions: Update lists...
@@ -66,7 +68,7 @@ Note: The WAN connection must now be connected to "ETH2".
   - Set Network to "lan"
   - Set Encryption to "WPA3-SAE" and configure a secure Key
 
-Validation: At this stage, peer nodes should be visible under the "Associated Stations" table in the wireless overview. If missing, verify all mesh settings are identical and radios are enabled.
+**Validation:** At this stage, peer nodes should be visible under the "Associated Stations" table in the wireless overview. If missing, verify all mesh settings are identical and radios are enabled.
 
 ### Configuring Wireless Access Points
 
@@ -81,34 +83,27 @@ Setting up the client-facing wireless networks follows a similar procedure. All 
  - Key: [WiFi-Password]
  - 802.11r Fast Transition: Enabled
 
- ## Performance Analysis
+## Performance Analysis
 
  During testing the max throughput observed was ~250Mbps. This represents a best case scenario as testing was done with only one device connected to the network. As devices on the network increases, the shared 5GHz radio will become overwhelmed and be a bottleneck. Latency and throughput would be affected as a result. 
 
- ## Operational Drawbacks
+## Operational Drawbacks
 
-1. Decentralized Management
-    Every configuration change must be done to all nodes manually and identically. Any slight variation in network or wireless settings will break the mesh topology. The addition of a centralized controller or automation system would greatly increase the usability of the system. 
+1. **Decentralized Management:**  Every configuration change must be done to all nodes manually and identically. Any slight variation in network or wireless settings will break the mesh topology. The addition of a centralized controller or automation system would greatly increase the usability of the system. 
 
-2. Channel Constraints/Interference: 
-    The Linksys WHW01-V1 is only a dual band system. All 5Ghz traffic (mesh backhaul and access) must use the same channel. Due to OpenWrt 802.11s requiring statically assigned channels rather than dynamic selection, this setup is susceptive to co-channel interference especially in congested wireless environments. 
+2. **Channel Constraints/Interference:** The Linksys WHW01-V1 is only a dual band system. All 5Ghz traffic (mesh backhaul and access) must use the same channel. Due to OpenWrt 802.11s requiring statically assigned channels rather than dynamic selection, this setup is susceptive to co-channel interference especially in congested wireless environments. 
 
-3. Half-Duplex Operation
-    The mesh backhaul and client AP both operate over the singular 5Ghz radio. To support this, the radio must alternate between receiving data from a client and transmitting data to the parent node. This configuration halves the available throughput for mesh connected devices.
+3. **Half-Duplex Operation:** The mesh backhaul and client AP both operate over the singular 5Ghz radio. To support this, the radio must alternate between receiving data from a client and transmitting data to the parent node. This configuration halves the available throughput for mesh connected devices.
 
 ## Future Configurations
 
-1. VLANs
-    Enabling 802.1Q VLANs instead of having a flat layer-2 network would greatly improve the security by isolating trusted devices from untrusted devices such as IoT. 
+1. **VLANs:** Enabling 802.1Q VLANs instead of having a flat layer-2 network would greatly improve the security by isolating trusted devices from untrusted devices such as IoT. 
 
-2. Advanced Firewall Policies
-    While the default NAT firewall rules in OpenWrt allow for network connectivity, creating granular rules based on VLAN, device type, etc would continue to restrict exposure to critical home lab systems. 
+2. **Advanced Firewall Policies:** While the default NAT firewall rules in OpenWrt allow for network connectivity, creating granular rules based on VLAN, device type, etc would continue to restrict exposure to critical home lab systems. 
 
-3. Centralized Management
-    Using automation such as Ansible would allow for greater ease of use for this mesh setup. 
+3. **Centralized Management:** Using automation such as Ansible would allow for greater ease of use for this mesh setup. 
 
-4. VPNs
-    Integrating WireGuard or OpenVPN would allow for secure out-of-band management and remote access to my internal resources. 
+4. **VPNs:** Integrating WireGuard or OpenVPN would allow for secure out-of-band management and remote access to my internal resources. 
 
 ## Conclusion
 
